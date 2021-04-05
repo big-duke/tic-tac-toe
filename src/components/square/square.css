@@ -1,0 +1,22 @@
+.square {
+    background: grey;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 5em;
+    text-align: center;
+    cursor:pointer  ;    
+      
+  }
+  
+  .square-invalid-move {
+    background-color: red;
+  }
+
+  .square-win {
+    background-color:green;
+  }
