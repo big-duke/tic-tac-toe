@@ -1,25 +1,19 @@
-import React, { Component } from 'react'
-import Square from '../square'
-import './grid.css'
+import Cell from "../cell";
+import "./grid.css";
 
-export default class Grid extends Component {
+export const Grid = (props) => {
+    const { gridData, onMove } = props;
 
-    render() {
-        const { gridData, onMakeMove, status, winnerCombo } = this.props;
-        const elements = gridData.map((item) => {
-            const { ...squareProps } = item;
-            if (status.endsWith('winner')) {
-                squareProps.canMove = false;
-            }
-            const paintWinner = (typeof winnerCombo.find(element => element === item.key) !== "undefined")
-
-            return <Square {...squareProps} paintWinner={paintWinner} onMakeMove={() => onMakeMove(item.key)} />
-        })
-
+    const cells = gridData.map((cell) => {
         return (
-            <div className='grid'>
-                {elements}
-            </div>
-        )
-    }
-}
+            <Cell
+                {...cell}
+                key={cell.key}
+                onMove={e => onMove(cell.key)}
+            />
+        );
+    });
+
+    return <div className="grid">{cells}</div>;
+};
+export default Grid;
