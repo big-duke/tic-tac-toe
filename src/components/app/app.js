@@ -1,40 +1,15 @@
-import { useState } from 'react'
-import Grid from '../grid/grid'
+import { GameProvider } from '../../game/GameContext'
+import Grid from '../grid/Grid'
+import { Restart } from '../restart/Restart'
 import './app.css'
 
-const App = () => {
-    const initGridData = (num = 9) => {
-        console.log('initGridData');
-        return new Array(num).fill('').map((_, index) => (
-            {
-                key: index,
-                mark: ''
-            }
-        ))
-    }
-    const [gridData, setGridData] = useState(initGridData)
-    const [mark, setMark] = useState('X')
-
-    const onMove = (key) => {
-        updateGrid(key)
-        nextMark()
-    }
-
-    const updateGrid = (key) => {
-        const idx = gridData.findIndex(element => element.key === key);
-        const newGridData = [...gridData]
-        newGridData[idx] = { key, mark }
-        setGridData(newGridData)
-    }
-
-    const nextMark = () => {
-        setMark(currentMark => currentMark === 'X' ? 'O' : 'X')
-    }
+function App() {
 
     return (
-        <>
-            <Grid gridData={gridData} onMove={onMove} />
-        </>
+        <GameProvider>
+            <Grid />
+            <Restart />
+        </GameProvider>
     )
 
 }

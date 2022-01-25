@@ -2,20 +2,21 @@ import { useState } from "react";
 import { markSymbol } from "./utilities";
 import "./cell.css";
 
+
 const Cell = (props) => {
   const [alert, setAlert] = useState(false);
-  const { mark, onMove } = props;
+
+  const { mark, onMove, locked, winner } = props;
 
   function flashCell() {
-    console.log('flash')
     setAlert(true);
     setTimeout(() => setAlert(false), 100);
   }
 
-  const onCellClick = mark === '' ? onMove : flashCell;
+  const onCellClick = !locked ? onMove : flashCell;
 
   let classNames = alert ? "cell cell-alert " : "cell";
-  // if (isCellInWinCombo) classNames += " cell-win";
+  if (winner) classNames += " cell-win";
 
   return (
     <>
