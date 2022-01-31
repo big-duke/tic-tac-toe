@@ -11,7 +11,7 @@ export const GameProvider = ({ children }) => {
 
     const [state, dispath] = useReducer(reducer, initialState)
 
-    const onMove = (key) => dispath({ type: ON_MOVE, key })
+    const onMove = ({ key }) => dispath({ type: ON_MOVE, key })
     const onReset = () => dispath({ type: ON_RESET })
 
     return (

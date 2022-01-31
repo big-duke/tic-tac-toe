@@ -13,7 +13,7 @@
 }
 
 .cell-alert {
-  background-color: red;
+  background-color: red !important;
 }
 
 .cell-win {
