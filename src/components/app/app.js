@@ -12,7 +12,6 @@ function App() {
     return (
         <GameProvider>
             <Grid />
-
             <Status />
             <Restart />
 
