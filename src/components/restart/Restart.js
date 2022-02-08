@@ -1,8 +1,10 @@
-import { useGame } from "../../game/GameContext"
-
+import { useDispatch } from 'react-redux'
+import actions from '../../redux/actions'
 export const Restart = () => {
-    const { onReset } = useGame()
+
+    const dispatch = useDispatch()
+
     return (
-        <button className="btn btn-outline-info flex-container" onClick={onReset}>Restart</button>
+        <button className="btn btn-outline-info flex-container" onClick={() => dispatch(actions.onReset())}>Restart</button>
     )
 }

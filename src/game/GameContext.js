@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from "react"
 import { initialState, reducer } from "../redux/reducer"
-import { ON_MOVE, ON_RESET } from "../redux/types"
+import types from "../redux/types"
 
 
 
@@ -11,8 +11,8 @@ export const GameProvider = ({ children }) => {
 
     const [state, dispath] = useReducer(reducer, initialState)
 
-    const onMove = ({ key }) => dispath({ type: ON_MOVE, key })
-    const onReset = () => dispath({ type: ON_RESET })
+    const onMove = ({ key }) => dispath({ type: types.ON_MOVE, key })
+    const onReset = () => dispath({ type: types.ON_RESET })
 
     return (
 

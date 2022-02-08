@@ -1,9 +1,12 @@
-import React from 'react';
-import { useGame } from '../../game/GameContext';
+//import React from 'react';
+import { useSelector } from 'react-redux'
+// import { useGame } from '../../game/gameContext';
 import './status.css'
 
 const Status = () => {
-    const { gridData, status } = useGame()
+    const gridData = useSelector(state => state.gridData)
+    const status = useSelector(state => state.status)
+    // const { gridData, status } = useGame()
     const className = getStatusColorClass(status)
     return (
         <h3 className="status">
@@ -14,6 +17,7 @@ const Status = () => {
     )
 }
 
+export default Status;
 
 function getStatusColorClass(status) {
     switch (status) {
@@ -46,4 +50,3 @@ function getDetailedStatus(gridData, status) {
 }
 
 
-export default Status;
